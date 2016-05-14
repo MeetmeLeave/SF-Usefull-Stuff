@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CodeGen.cs" />
+    <Compile Include="DependentPickListGenerator.cs" />
     <Compile Include="FieldsGen.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
