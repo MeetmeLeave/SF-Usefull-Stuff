@@ -17,7 +17,7 @@ namespace ConsoleApplication1
             foreach (var str in core)
             {
                 stringSeparators[0] = ("\t");
-                string[] picklistCombo = str.Split(stringSeparators, StringSplitOptions.RemoveEmptyEntries);
+                string[] picklistCombo = str.Replace("&", "&amp;").Replace("-","").Split(stringSeparators, StringSplitOptions.RemoveEmptyEntries);
 
                 string key = picklistCombo[1].Replace("\"", "");
                 string controling = picklistCombo[0].Replace("\"", "");
@@ -36,11 +36,11 @@ namespace ConsoleApplication1
 
             StringBuilder builder = new StringBuilder();
             builder.AppendLine("<fields>");
-            builder.AppendLine("<fullName>Infustry_Type__c</fullName>");
+            builder.AppendLine("<fullName>Lead_Source_Type_del__c</fullName>");
             builder.AppendLine("<externalId>false</externalId>");
-            builder.AppendLine("<label>Infustry Type</label>");
+            builder.AppendLine("<label>Lead Source Type</ label>");
             builder.AppendLine("<picklist>");
-            builder.AppendLine("<controllingField>Industry</controllingField>");
+            builder.AppendLine("<controllingField>Lead_Source_Group_del__c</ controllingField>");
 
             foreach (var key in pickListDependencies.Keys)
             {
