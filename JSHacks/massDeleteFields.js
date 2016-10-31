@@ -1,6 +1,6 @@
 function massSoftDeleteFields() {
     var names =
-        `tt_del_del__c
+        `tttwer__c
 aa_del_del__c
 `;
 
@@ -44,14 +44,15 @@ deletionExecutor.prototype.performCall = function () {
             var delLink = this.delLinks[this.i];
 
             var href = delLink.attributes.href.value;
+            var hrefName = delLink.attributes.onClick.value.split('ustomFieldConfirmDeletePage?name=')[1].split('\'')[0];
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.open("GET", href, true);
             xmlhttp.onreadystatechange = function () {
                 if (xmlhttp.readyState == 4) {
                     if (xmlhttp.status == 200) {
-                        console.log('deleted!');
+                        console.log(hrefName + ' deleted!');
                     } else {
-                        console.log('Failed to delete field: ' + linkName2);
+                        console.log('Failed to delete field: ' + hrefName);
                     }
 
                     that.i += 1;
@@ -59,6 +60,8 @@ deletionExecutor.prototype.performCall = function () {
                 }
             }.bind(that);
             xmlhttp.send();
+        } else {
+            console.log('Deletion completed!');
         }
     }, 3500);
 }
