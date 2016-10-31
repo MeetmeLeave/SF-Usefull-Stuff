@@ -21,7 +21,7 @@ aa_del_del__c
                 }
             }
             var titleSplit = element.title.split(' ');
-            var linkName = titleSplit[titleSplit.length - 1]; //link.getAttribute('onClick').split('/ui/setup/confirm/CustomFieldConfirmDeletePage?name=')[1].split('\'')[0];
+            var linkName = titleSplit[titleSplit.length - 1];
             if (namesArray.indexOf(linkName) >= 0) {
                 delLinks[delLinks.length] = link;
             }
@@ -45,7 +45,6 @@ deletionExecutor.prototype.performCall = function () {
 
             var href = delLink.attributes.href.value;
             var xmlhttp = new XMLHttpRequest();
-            // xmlhttp.open("GET", '/setup/own/deleteredirect.jsp?type=ContactCleanInfo&setupid=ContactCleanInfoFields&delID=00N0Y00000486TS&retURL=%2Fp%2Fsetup%2Flayout%2FLayoutFieldList%3Ftype%3DContactCleanInfo%26setupid%3DContactCleanInfoFields&_CONFIRMATIONTOKEN=VmpFPSxNakF4TmkweE1DMHpNRlF5TWpveU1Ub3dOUzQxT1RCYSxISTN1aWlCUkxqemFoSkR0cnZreWZQLFl6UmhPRE16', true);
             xmlhttp.open("GET", href, true);
             xmlhttp.onreadystatechange = function () {
                 if (xmlhttp.readyState == 4) {
