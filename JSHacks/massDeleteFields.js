@@ -44,7 +44,12 @@ deletionExecutor.prototype.performCall = function () {
             var delLink = this.delLinks[this.i];
 
             var href = delLink.attributes.href.value;
-            var hrefName = delLink.attributes.onClick.value.split('ustomFieldConfirmDeletePage?name=')[1].split('\'')[0];
+            var hrefName = 'temp';
+            try {
+                hrefName = delLink.attributes.onClick.value.split('ustomFieldConfirmDeletePage?name=')[1].split('\'')[0];
+            } catch (err) {
+                console.log('Error: ' + err);
+            }
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.open("GET", href, true);
             xmlhttp.onreadystatechange = function () {
