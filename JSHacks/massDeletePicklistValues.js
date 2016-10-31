@@ -33,7 +33,7 @@ deletionExecutor.prototype.performCall = function () {
             var that = this;
             var delLink = this.delLinks[this.i];
 
-            var getParams = delLink.attributes['href'].value.split('?')[1].split('&');
+            var getParams = delLink.attribute.href.value.split('?')[1].split('&');
             var paramsMap = new Map();
             getParams.forEach(function (element) {
                 var elementParams = element.split('=');
@@ -60,11 +60,12 @@ deletionExecutor.prototype.performCall = function () {
                 if (xmlhttp.readyState == 4) {
                     if (xmlhttp.status == 200) {
                         console.log('Picklist value: ' + linkName2 + ' has been deleted!');
-                        that.i += 1;
-                        that.performCall();
                     } else {
                         console.log('Failed to delete picklist value: ' + linkName2);
                     }
+
+                    that.i += 1;
+                    that.performCall();
                 }
             }.bind(that);
             xmlhttp.send(params);
